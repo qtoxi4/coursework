@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><link rel="stylesheet" href="/css/style.css"><title>Редагувати предмет</title></head>
+<body>
+<h1>Редагувати предмет</h1>
+<form th:action="@{'/subjects/edit/' + ${subject.id}}" th:object="${subject}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label>Назва:</label>
+    <input type="text" th:field="*{name}" /><br>
+
+    <button type="submit">Зберегти</button>
+</form>
+<a href="/subjects">Назад</a>
+</body>
+</html>

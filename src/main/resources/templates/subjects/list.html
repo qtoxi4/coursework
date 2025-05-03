@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><link rel="stylesheet" href="/css/style.css"><title>Предмети</title></head>
+<body>
+<h1>Предмети</h1>
+<a href="/subjects/create">Новий предмет</a><hr>
+<table border="1">
+    <thead>
+    <tr><th>ID</th><th>Назва</th><th>Дії</th></tr>
+    </thead>
+    <tbody>
+    <tr th:each="subject : ${subjects}">
+        <td th:text="${subject.id}"></td>
+        <td th:text="${subject.name}"></td>
+        <td>
+            <a th:href="@{'/subjects/edit/' + ${subject.id}}">Редагувати</a> |
+            <a th:href="@{'/subjects/delete/' + ${subject.id}}" onclick="return confirm('Ви впевнені?')">Видалити</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

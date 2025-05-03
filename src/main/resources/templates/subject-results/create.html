@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Створити результат предмету</title>
+</head>
+<body>
+<h1>Створити результат предмету</h1>
+
+<form th:action="@{/subject-results/create}" th:object="${subjectResult}" method="post">
+    <label>Оцінка:</label>
+    <input type="number" th:field="*{score}" /><br>
+
+    <label>Предмет:</label>
+    <select th:field="*{subjectId}">
+        <option th:each="subject : ${subjects}"
+                th:value="${subject.id}"
+                th:text="${subject.name}">
+        </option>
+    </select><br>
+
+    <label>Заявка:</label>
+    <select th:field="*{applicationId}">
+        <option th:each="app : ${applications}"
+                th:value="${app.id}"
+                th:text="${app.formattedDate}">
+        </option>
+    </select><br>
+
+    <button type="submit">Зберегти</button>
+</form>
+
+<a href="/subject-results">Назад</a>
+</body>
+</html>

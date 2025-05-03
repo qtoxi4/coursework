@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Результати предметів</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Результати предметів</h1>
+<a href="/subject-results/create">Новий результат</a><hr>
+<table border="1">
+    <thead>
+    <tr><th>ID</th><th>Оцінка</th><th>Предмет id</th><th>Заявка id</th><th>Дії</th></tr>
+    </thead>
+    <tbody>
+    <tr th:each="subjectResult : ${subjectResults}">
+        <td th:text="${subjectResult.id}"></td>
+        <td th:text="${subjectResult.score}"></td>
+        <td th:text="${subjectResult.subjectId}"></td>
+        <td th:text="${subjectResult.applicationId}"></td>
+        <td>
+            <a th:href="@{'/subject-results/edit/' + ${subjectResult.id}}">Редагувати</a> |
+            <a th:href="@{'/subject-results/delete/' + ${subjectResult.id}}" onclick="return confirm('Ви впевнені?')">Видалити</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

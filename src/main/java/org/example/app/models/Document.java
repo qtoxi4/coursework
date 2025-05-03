@@ -1,8 +1,12 @@
 package org.example.app.models;
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,7 +17,6 @@ public class Document {
     private LocalDate issueDate;
 
     @OneToOne
-    @JoinColumn(name = "applicant_id")
     private Applicant applicant;
 }
 

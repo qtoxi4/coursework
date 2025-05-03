@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><link rel="stylesheet" href="/css/style.css"><title>Спеціальності</title></head>
+<body>
+<h1>Спеціальності</h1>
+<a href="/specialties/create">Нова спеціальність</a><hr>
+<table border="1">
+    <thead>
+    <tr><th>ID</th><th>Назва</th><th>Кількість бюджетних місць</th><th>Дії</th></tr>
+    </thead>
+    <tbody>
+    <tr th:each="s : ${specialties}">
+        <td th:text="${s.id}"></td>
+        <td th:text="${s.name}"></td>
+        <td th:text="${s.budgetSeats}"></td>
+        <td>
+            <a th:href="@{'/specialties/edit/' + ${s.id}}">Редагувати</a> |
+            <a th:href="@{'/specialties/delete/' + ${s.id}}" onclick="return confirm('Ви впевнені?')">Видалити</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

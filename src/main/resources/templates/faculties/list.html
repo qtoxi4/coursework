@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><link rel="stylesheet" href="/css/style.css"><title>Факультети</title></head>
+<body>
+<h1>Факультети</h1>
+<a href="/faculties/create">Новий факультет</a><hr>
+<table border="1">
+    <thead>
+    <tr><th>ID</th><th>Назва</th><th>Дії</th></tr>
+    </thead>
+    <tbody>
+    <tr th:each="f : ${faculties}">
+        <td th:text="${f.id}"></td>
+        <td th:text="${f.name}"></td>
+        <td>
+            <a th:href="@{'/faculties/edit/' + ${f.id}}">Редагувати</a> |
+            <a th:href="@{'/faculties/delete/' + ${f.id}}" onclick="return confirm('Ви впевнені?')">Видалити</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
