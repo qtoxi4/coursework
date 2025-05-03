@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><link rel="stylesheet" href="/css/style.css"><title>Редагувати документ</title></head>
+<body>
+<h1>Редагувати документ</h1>
+<form th:action="@{'/documents/edit/' + ${document.id}}" th:object="${document}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <label>Номер документа:</label>
+    <input type="text" th:field="*{documentNumber}" /><br>
+    <label>Дата видачі:</label>
+    <input type="date" th:field="*{issueDate}" /><br>
+    <label>Абітурієнт:</label>
+    <select th:field="*{applicantId}">
+        <option th:each="a : ${applicants}" th:value="${a.id}" th:text="${a.fullName}"></option>
+    </select><br>
+    <button type="submit">Зберегти</button>
+</form>
+<a href="/documents">Назад</a>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Заявники</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Заявники</h1>
+<a href="/applicants/create">Додати нового заявника</a>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>ПІБ</th>
+        <th>Дата народження</th>
+        <th>Додатковий бал</th>
+        <th>Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="a : ${applicants}">
+        <td th:text="${a.id}"></td>
+        <td th:text="${a.fullName}"></td>
+        <td th:text="${a.birthDate}"></td>
+        <td th:text="${a.additionalScore}"></td>
+        <td>
+            <a th:href="@{'/applicants/edit/' + ${a.id}}">Редагувати</a> |
+            <a th:href="@{'/applicants/delete/' + ${a.id}}" onclick="return confirm('Ви впевнені?')">Видалити</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><link rel="stylesheet" href="/css/style.css"><title>Заявки</title></head>
+<body>
+<h1>Заявки</h1>
+<a href="/applications/create">Нова заявка</a><hr>
+<table border="1">
+    <thead>
+    <tr><th>ID</th><th>Дата</th><th>Абітурієнт</th><th>Спеціальність</th><th>Дії</th></tr>
+    </thead>
+    <tbody>
+    <tr th:each="app : ${applications}">
+        <td th:text="${app.id}"></td>
+        <td th:text="${app.date}"></td>
+        <td th:text="${app.applicantId}"></td>
+        <td th:text="${app.specialtyId}"></td>
+        <td>
+            <a th:href="@{'/applications/edit/' + ${app.id}}">Редагувати</a> |
+            <a th:href="@{'/applications/delete/' + ${app.id}}" onclick="return confirm('Ви впевнені?')">Видалити</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

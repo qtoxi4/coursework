@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Коефіцієнти предметів</title></head>
+<body style="padding: 30px">
+<h1>Коефіцієнти предметів</h1>
+<a href="/subject-coefficients/create">Новий коефіцієнт</a><hr>
+<table border="1">
+    <thead>
+    <tr><th>ID</th><th>Коефіцієнт</th><th>Предмет id</th><th>Факультет id</th><th>Дії</th></tr>
+    </thead>
+    <tbody>
+    <tr th:each="subjectCoefficient : ${subjectCoefficients}">
+        <td th:text="${subjectCoefficient.id}"></td>
+        <td th:text="${subjectCoefficient.coefficient}"></td>
+        <td th:text="${subjectCoefficient.subjectId}"></td>
+        <td th:text="${subjectCoefficient.facultyId}"></td>
+        <td>
+            <a th:href="@{'/subject-coefficients/edit/' + ${subjectCoefficient.id}}">Редагувати</a> |
+            <a th:href="@{'/subject-coefficients/delete/' + ${subjectCoefficient.id}}" onclick="return confirm('Ви впевнені?')">Видалити</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

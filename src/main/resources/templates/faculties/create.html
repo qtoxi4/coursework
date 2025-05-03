@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><link rel="stylesheet" href="/css/style.css"><title>Створити факультет</title></head>
+<body>
+<h1>Створити факультет</h1>
+<form th:action="@{/faculties/create}" th:object="${faculty}" method="post">
+    <label>Назва:</label>
+    <input type="text" th:field="*{name}" /><br>
+    <button type="submit">Зберегти</button>
+</form>
+<a href="/faculties">Назад</a>
+</body>
+</html>

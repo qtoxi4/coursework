@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><link rel="stylesheet" href="/css/style.css"><title>Створити спеціальність</title></head>
+<body>
+<h1>Створити спеціальність</h1>
+<form th:action="@{/specialties/create}" th:object="${specialty}" method="post">
+    <label>Назва:</label>
+    <input type="text" th:field="*{name}" /><br>
+
+    <label>Кількість бюджетних місць:</label>
+    <input type="number" th:field="*{budgetSeats}" /><br>
+
+    <label>Факультет:</label>
+    <select th:field="*{facultyId}">
+        <option th:each="faculty : ${faculties}"
+                th:value="${faculty.id}"
+                th:text="${faculty.name}"></option>
+    </select><br>
+
+    <button type="submit">Зберегти</button>
+</form>
+<a href="/specialties">Назад</a>
+</body>
+</html>

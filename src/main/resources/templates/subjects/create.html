@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><link rel="stylesheet" href="/css/style.css"><title>Створити предмет</title></head>
+<body>
+<h1>Створити предмет</h1>
+<form th:action="@{/subjects/create}" th:object="${subject}" method="post">
+    <label>Назва:</label>
+    <input type="text" th:field="*{name}" /><br>
+
+    <button type="submit">Зберегти</button>
+</form>
+<a href="/subjects">Назад</a>
+</body>
+</html>

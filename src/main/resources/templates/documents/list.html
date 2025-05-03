@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><link rel="stylesheet" href="/css/style.css"><title>Документи</title></head>
+<body>
+<h1>Документи</h1>
+<a href="/documents/create">Новий документ</a><hr>
+<table border="1">
+    <thead>
+    <tr><th>ID</th><th>Номер</th><th>Дата видачі</th><th>Абітурієнт</th><th>Дії</th></tr>
+    </thead>
+    <tbody>
+    <tr th:each="doc : ${documents}">
+        <td th:text="${doc.id}"></td>
+        <td th:text="${doc.documentNumber}"></td>
+        <td th:text="${doc.issueDate}"></td>
+        <td th:text="${doc.applicantId}"></td>
+        <td>
+            <a th:href="@{'/documents/edit/' + ${doc.id}}">Редагувати</a> |
+            <a th:href="@{'/documents/delete/' + ${doc.id}}" onclick="return confirm('Ви впевнені?')">Видалити</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
